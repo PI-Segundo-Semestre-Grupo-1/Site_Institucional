@@ -1,33 +1,29 @@
 /* ==========================================================================
-   TEMA: NOC / Monitoramento Proativo de Frota
-   Painel de controle escuro, sinalização por status (ok/alerta/crítico),
-   tipografia técnica. Ponto de assinatura: "pulse dot" de uptime.
+   TEMA: MagnaSync / Monitoramento Proativo Hospitalar
+   Visual clínico, limpo e claro. Sem animações ou efeitos complexos.
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
   /* Superfícies */
-  --bg-deep: #090d13;
-  --bg-panel: #121924;
-  --bg-panel-alt: #1a2330;
-  --line: #26313f;
-  --line-strong: #34435530;
+  --bg-fundo: #eaf2f6;
+  --bg-painel: #ffffff;
+  --linha: #048cd4;
 
   /* Texto */
-  --text-primary: #e7edf5;
-  --text-muted: #8b98ab;
+  --texto-principal: #1c2e3a;
+  --texto-suave: #4f6675;
 
-  /* Sinal / status (cores de criticidade de alerta) */
-  --status-ok: #38d996;
-  --status-warn: #f2b84b;
-  --status-critical: #ff5c6c;
-  --signal: #4fd1ff;
+  /* Sinal / status */
+  --status-ok: #2f9e64;
+  --status-alerta: #d99a1f;
+  --status-critico: #d9414d;
+  --destaque: #0077b6;
+  --destaque-escuro: #005f92;
 
   /* Tipografia */
-  --font-display: 'Space Grotesk', 'Segoe UI', sans-serif;
-  --font-body: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+  --fonte: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
   --tamanho-header: 80px;
   --tamanho-footer: 65px;
@@ -39,14 +35,9 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: var(--font-body);
-  background-color: var(--bg-deep);
-  color: var(--text-primary);
-  /* leve grid de fundo, tipo painel de NOC */
-  background-image:
-    linear-gradient(var(--line-strong) 1px, transparent 1px),
-    linear-gradient(90deg, var(--line-strong) 1px, transparent 1px);
-  background-size: 40px 40px;
+  font-family: var(--fonte);
+  background-color: var(--bg-fundo);
+  color: var(--texto-principal);
 }
 
 .container {
@@ -59,8 +50,8 @@ body {
 
 .header {
   height: var(--tamanho-header);
-  background-color: var(--bg-panel);
-  border-bottom: 1px solid var(--line);
+  background-color: var(--bg-painel);
+  border-bottom: 2px solid var(--destaque);
 }
 
 .header .container {
@@ -71,22 +62,18 @@ body {
 
 .header a {
   text-decoration: none;
-  color: var(--text-muted);
-  font-family: var(--font-mono);
+  color: var(--texto-suave);
   font-size: 14px;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
   transition: color 0.15s ease;
 }
 
 .header a:hover {
-  color: var(--signal);
+  color: var(--destaque);
 }
 
 .agora a {
-  color: var(--signal) !important;
-}
-
-.agora {
+  color: var(--destaque) !important;
   font-weight: 600;
 }
 
@@ -96,31 +83,17 @@ body {
   align-items: center;
   justify-content: space-between;
   list-style: none;
-  color: var(--text-muted);
+  color: var(--texto-suave);
 }
 
 .titulo {
-  color: var(--text-primary);
+  color: var(--texto-principal);
   width: fit-content;
-  font-family: var(--font-display);
   font-weight: 700;
   letter-spacing: -0.01em;
   display: flex;
   align-items: center;
   gap: 10px;
-}
-
-/* elemento-assinatura: pulso de status ao lado do logo */
-.titulo::before {
-  content: "";
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--status-ok);
-  box-shadow: 0 0 0 0 rgba(56, 217, 150, 0.6);
-  animation: uptime-pulse 2.4s infinite;
-  flex-shrink: 0;
 }
 
 .header h1 {
@@ -132,13 +105,12 @@ body {
 
 .banner {
   height: var(--tamanho-banner);
-  color: var(--text-primary);
-  background-color: var(--bg-deep);
-  background-image:
-    linear-gradient(180deg, rgba(9, 13, 19, 0.55) 0%, rgba(9, 13, 19, 0.9) 100%),
-    url('../assets/imgs/bg-jelly-fish-para-home.png');
-  background-size: cover;
+  color: var(--texto-principal);
+  background-color: var(--destaque-escuro);
+  background-image: url('../assets/imgs/maquina.avif');
+  background-repeat: no-repeat;
   background-position: center;
+  background-size: contain;
 }
 
 .banner .container {
@@ -151,33 +123,28 @@ body {
   width: 50%;
   margin: 0;
   padding: 0;
-  font-family: var(--font-display);
   font-size: 36px;
   font-weight: 500;
   line-height: 1.3;
+  color: #ffffff;
 }
 
 .banner .container span {
   font-weight: 700;
-  color: var(--signal);
+  color: #cdeeff;
 }
 
 /* MISSÃO VISÃO VALORES */
 
 .social {
-  background-color: var(--bg-panel);
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  background-color: var(--bg-painel);
+  border-top: 1px solid var(--linha);
+  border-bottom: 1px solid var(--linha);
   display: flex;
 }
 
 .social .container {
   justify-content: center;
-}
-
-.box img {
-  width: 170px;
-  filter: grayscale(1) brightness(1.4) opacity(0.9);
 }
 
 .social .container .boxes {
@@ -187,36 +154,44 @@ body {
   padding: 40px 0;
 }
 
-.social h4 {
-  font-family: var(--font-mono);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 14px;
-  color: var(--signal);
-}
-
-.social p {
-  text-align: center;
-  color: var(--text-muted);
-  max-width: 260px;
-}
-
 .box {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: var(--bg-fundo);
+  border: 1px solid var(--linha);
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(28, 46, 58, 0.08);
+  padding: 24px 20px;
+  width: 26%;
+}
+
+.box img {
+  width: 90px;
+}
+
+.social h4 {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 14px;
+  color: var(--destaque);
+}
+
+.social p {
+  text-align: center;
+  color: var(--texto-suave);
+  max-width: 260px;
 }
 
 /* FOOTER */
 
 .footer {
-  background-color: var(--bg-panel);
-  border-top: 1px solid var(--line);
+  background-color: var(--bg-painel);
+  border-top: 1px solid var(--linha);
   height: 150px;
-  color: var(--text-muted);
+  color: var(--texto-suave);
   display: flex;
   font-size: 15px;
-  font-family: var(--font-mono);
 }
 
 .footer .container {
@@ -226,19 +201,14 @@ body {
 
 .footer .container .version {
   font-size: 12px;
-  color: var(--text-muted);
+  color: var(--texto-suave);
 }
 
 /* LOGIN */
 
 .login {
   height: var(--tamanho-login);
-  background-color: var(--bg-deep);
-  background-image:
-    linear-gradient(180deg, rgba(9, 13, 19, 0.6) 0%, rgba(9, 13, 19, 0.92) 100%),
-    url('../assets/imgs/bg-jelly-fish-para-home.png');
-  background-size: cover;
-  background-position: center;
+  background-color: var(--bg-fundo);
 }
 
 .login .container {
@@ -249,13 +219,14 @@ body {
 
 .card {
   width: 50%;
-  background-color: var(--bg-panel);
-  border: 1px solid var(--line);
-  border-radius: 6px;
+  background-color: var(--bg-painel);
+  border: 1px solid var(--linha);
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(28, 46, 58, 0.08);
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  color: var(--text-primary);
+  color: var(--texto-principal);
   flex-direction: column;
   height: fit-content;
   padding: 24px 0;
@@ -263,7 +234,6 @@ body {
 
 .card h2 {
   margin: 0;
-  font-family: var(--font-display);
   font-size: 28px;
   font-weight: 600;
 }
@@ -277,33 +247,30 @@ body {
 }
 
 .formulario span {
-  font-family: var(--font-mono);
   font-size: 13px;
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  color: var(--texto-suave);
 }
 
 .formulario input {
-  border: 1px solid var(--line);
-  background-color: var(--bg-panel-alt);
-  color: var(--text-primary);
+  border: 1px solid var(--linha);
+  background-color: var(--bg-fundo);
+  color: var(--texto-principal);
   text-align: center;
   border-radius: 4px;
   margin: 0;
-  font-family: var(--font-mono);
 }
 
 .formulario select {
-  border: 1px solid var(--line);
-  background-color: var(--bg-panel-alt);
-  color: var(--text-primary);
+  border: 1px solid var(--linha);
+  background-color: var(--bg-fundo);
+  color: var(--texto-principal);
   height: 36px;
   text-align: center;
   border-radius: 4px;
   margin: 0;
-  font-family: var(--font-mono);
 }
 
 .campo {
@@ -315,24 +282,23 @@ body {
 
 .botao {
   cursor: pointer;
-  font-family: var(--font-mono);
   border: 0;
   border-radius: 4px;
   font-weight: 600;
   font-size: 15px;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--bg-deep);
-  background-color: var(--status-ok);
+  letter-spacing: 0.03em;
+  color: #ffffff;
+  background-color: var(--destaque);
   width: 120px;
   height: 32px;
   align-self: center;
   margin-top: 20px;
-  transition: filter 0.15s ease;
+  transition: opacity 0.15s ease;
 }
 
 .botao:hover {
-  filter: brightness(1.1);
+  opacity: 0.9;
 }
 
 .loading-div {
@@ -358,16 +324,15 @@ body {
 
 .card_erro {
   display: none;
-  background-color: var(--bg-panel);
-  color: var(--text-primary);
+  background-color: var(--bg-painel);
+  color: var(--texto-principal);
   width: 230px;
   position: fixed;
   border-radius: 4px;
-  border: 1px solid var(--status-critical);
-  border-left: 4px solid var(--status-critical);
+  border: 1px solid var(--status-critico);
+  border-left: 4px solid var(--status-critico);
   padding: 10px;
   margin-right: 10%;
-  font-family: var(--font-mono);
 }
 
 .card_erro #mensagem_erro {
@@ -377,9 +342,8 @@ body {
 
 .formulario .tipo_campo {
   font-size: 18px;
-  font-family: var(--font-display);
   font-weight: 600 !important;
-  color: var(--text-primary);
+  color: var(--texto-principal);
 }
 
 .formulario {
@@ -389,41 +353,39 @@ body {
 
 input {
   margin-bottom: 10px;
-  border: 1px solid var(--line);
-  background-color: var(--bg-panel-alt);
-  color: var(--text-primary);
+  border: 1px solid var(--linha);
+  background-color: var(--bg-fundo);
+  color: var(--texto-principal);
   padding: 10px;
   text-align: center;
   border-radius: 4px;
-  font-family: var(--font-mono);
 }
 
 .btn {
-  font-family: var(--font-mono);
   border: 0;
   border-radius: 4px;
   font-weight: 600;
   font-size: 15px;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   padding: 10px 15px;
-  color: var(--bg-deep);
-  background-color: var(--status-ok);
+  color: #ffffff;
+  background-color: var(--destaque);
   width: 120px;
   align-self: center;
   margin-top: 5px;
   cursor: pointer;
-  transition: filter 0.15s ease;
+  transition: opacity 0.15s ease;
 }
 
 .btn:hover {
-  filter: brightness(1.1);
+  opacity: 0.9;
 }
 
 /* SIMULADOR */
 
 .simulador {
-  color: var(--text-primary);
+  color: var(--texto-principal);
 }
 
 .simulador .container {
@@ -432,7 +394,7 @@ input {
   height: var(--tamanho-simulador);
 }
 
-/* ALERTA (notificação flutuante de anomalia) */
+/* ALERTA (notificação de anomalia) */
 
 #alerta {
   position: absolute;
@@ -441,9 +403,9 @@ input {
 }
 
 .mensagem-alarme {
-  background-color: var(--bg-panel);
-  border: 1px solid var(--line);
-  border-left: 4px solid var(--status-critical);
+  background-color: var(--bg-painel);
+  border: 1px solid var(--linha);
+  border-left: 4px solid var(--status-critico);
   border-radius: 4px;
   width: 300px;
   height: 80px;
@@ -452,37 +414,18 @@ input {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  color: var(--text-primary);
+  color: var(--texto-principal);
+  box-shadow: 0 2px 6px rgba(28, 46, 58, 0.12);
 }
 
 .mensagem-alarme h3 {
-  font-family: var(--font-mono);
   font-size: 13px;
   margin: 0;
-  color: var(--status-critical);
+  color: var(--status-critico);
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
 }
 
 .mensagem-alarme .informacao {
   width: 66%;
-}
-
-.alarme-sino {
-  width: 40px;
-  height: 40px;
-  animation-name: bell;
-  animation-duration: 4s;
-  background-image: url('https://cdn-icons-png.flaticon.com/512/1157/1157000.png');
-  background-size: cover;
-  animation-iteration-count: infinite;
-  filter: invert(48%) sepia(78%) saturate(3000%) hue-rotate(325deg) brightness(1.05);
-}
-
-@keyframes bell {
-  0%   {transform: rotate(25deg)}
-  25%  {transform: rotate(-25deg)}
-  50%  {transform: rotate(25deg)}
-  75%  {transform: rotate(-25deg)}
-  100% {transform: rotate(25deg)}
 }

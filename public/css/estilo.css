@@ -46,6 +46,89 @@ body {
   margin: auto;
 }
 
+/* ACESSIBILIDADE */
+
+.pular-conteudo {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background-color: var(--destaque);
+  color: #ffffff;
+  padding: 10px 16px;
+  border-radius: 0 0 4px 0;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.pular-conteudo:focus {
+  left: 0;
+}
+
+/* TOPBAR (contato rápido) */
+
+.topbar {
+  background-color: var(--destaque-escuro);
+  color: #eaf6ff;
+  font-size: 13px;
+}
+
+.topbar .container {
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+}
+
+.topbar-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #eaf6ff;
+  text-decoration: none;
+}
+
+.topbar a.topbar-item:hover {
+  text-decoration: underline;
+}
+
+/* BOTÃO CTA */
+
+.btn-cta {
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  padding: 10px 20px;
+  border-radius: 4px;
+  transition: opacity 0.15s ease, background-color 0.15s ease;
+  white-space: nowrap;
+}
+
+.btn-cta--primario {
+  background-color: var(--destaque);
+  color: #ffffff;
+}
+
+.btn-cta--primario:hover {
+  opacity: 0.9;
+}
+
+.btn-cta--secundario {
+  background-color: transparent;
+  color: var(--destaque);
+  border: 1px solid var(--destaque);
+}
+
+.btn-cta--secundario:hover {
+  background-color: rgba(0, 119, 182, 0.08);
+}
+
+.btn-cta--header {
+  padding: 8px 16px;
+  font-size: 13px;
+}
+
 /* HEADER */
 
 .header {
@@ -58,6 +141,7 @@ body {
   justify-content: space-between;
   align-items: center;
   height: 100%;
+  gap: 24px;
 }
 
 .header a {
@@ -84,6 +168,16 @@ body {
   justify-content: space-between;
   list-style: none;
   color: var(--texto-suave);
+  margin: 0;
+  padding: 0;
+}
+
+/* Separador visual entre os itens do menu, sem depender de texto "|"
+   (evita que leitores de tela leiam um caractere sem sentido) */
+.navbar li[aria-hidden="true"] {
+  width: 1px;
+  height: 16px;
+  background-color: var(--linha);
 }
 
 .titulo {
@@ -111,6 +205,7 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+  opacity: 0.7;
 }
 
 .banner .container {
@@ -134,6 +229,54 @@ body {
   color: #cdeeff;
 }
 
+.banner-cta {
+  display: flex;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.banner-cta .btn-cta--secundario {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+.banner-cta .btn-cta--secundario:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* ESTATÍSTICAS */
+
+.stats {
+  background-color: var(--destaque-escuro);
+}
+
+.stats .container {
+  justify-content: space-between;
+  padding: 28px 0;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 33%;
+  text-align: center;
+  color: #ffffff;
+}
+
+.stat-numero {
+  font-size: 30px;
+  font-weight: 700;
+  color: #cdeeff;
+}
+
+.stat-legenda {
+  font-size: 13px;
+  color: #eaf6ff;
+}
+
 /* MISSÃO VISÃO VALORES */
 
 .social {
@@ -141,6 +284,7 @@ body {
   border-top: 1px solid var(--linha);
   border-bottom: 1px solid var(--linha);
   display: flex;
+  justify-content: center;
 }
 
 .social .container {
@@ -157,6 +301,7 @@ body {
 .box {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   background-color: var(--bg-fundo);
   border: 1px solid var(--linha);
@@ -175,6 +320,14 @@ body {
   letter-spacing: 0.06em;
   font-size: 14px;
   color: var(--destaque);
+  margin: 12px 0;
+}
+
+/* O span dentro do h4 "Sobre nós" precisa de um destaque próprio,
+   já que herda a cor uppercase do h4 mas deve se diferenciar do resto */
+.social h4 span {
+  color: var(--destaque-escuro);
+  font-weight: 700;
 }
 
 .social p {
@@ -183,25 +336,183 @@ body {
   max-width: 260px;
 }
 
+/* FUNCIONALIDADES (Como funciona) */
+
+.funcionalidades {
+  background-color: var(--bg-fundo);
+  padding: 60px 0;
+}
+
+.funcionalidades .container {
+  flex-direction: column;
+}
+
+.funcionalidades-cabecalho {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 40px;
+}
+
+.funcionalidades-cabecalho h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 12px;
+  color: var(--texto-principal);
+}
+
+.funcionalidades-cabecalho p {
+  color: var(--texto-suave);
+  margin: 0;
+}
+
+.funcionalidades-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.funcionalidade {
+  background-color: var(--bg-painel);
+  border: 1px solid var(--linha);
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(28, 46, 58, 0.08);
+  padding: 24px 20px;
+  width: calc(25% - 15px);
+  min-width: 200px;
+}
+
+.funcionalidade-icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  background-color: var(--bg-fundo);
+  color: var(--destaque);
+  margin-bottom: 14px;
+}
+
+.funcionalidade h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 8px;
+  color: var(--texto-principal);
+}
+
+.funcionalidade p {
+  font-size: 14px;
+  color: var(--texto-suave);
+  margin: 0;
+}
+
+/* CTA FINAL */
+
+.cta-final {
+  background-color: var(--destaque);
+  padding: 50px 0;
+}
+
+.cta-final .container {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+}
+
+.cta-final h2 {
+  color: #ffffff;
+  font-size: 26px;
+  margin: 0;
+}
+
+.cta-final p {
+  color: #eaf6ff;
+  max-width: 520px;
+  margin: 0 0 8px;
+}
+
+.cta-final .btn-cta--primario {
+  background-color: #ffffff;
+  color: var(--destaque);
+}
+
+.cta-final .btn-cta--primario:hover {
+  opacity: 0.9;
+}
+
 /* FOOTER */
 
 .footer {
   background-color: var(--bg-painel);
   border-top: 1px solid var(--linha);
-  height: 150px;
   color: var(--texto-suave);
-  display: flex;
   font-size: 15px;
-}
-
-.footer .container {
-  justify-content: center;
-  text-align: center;
+  padding-top: 40px;
 }
 
 .footer .container .version {
   font-size: 12px;
   color: var(--texto-suave);
+}
+
+.footer-grid {
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 32px;
+  padding-bottom: 32px;
+}
+
+.footer-coluna {
+  width: 30%;
+  min-width: 200px;
+}
+
+.footer-titulo {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 10px;
+  color: var(--texto-principal);
+}
+
+.footer-coluna h3 {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--destaque);
+  margin: 0 0 12px;
+}
+
+.footer-coluna p {
+  font-size: 14px;
+  margin: 0;
+}
+
+.footer-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-links a {
+  color: var(--texto-suave);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-links a:hover {
+  color: var(--destaque);
+}
+
+.footer-base {
+  border-top: 1px solid var(--linha);
+  justify-content: center;
+  padding: 16px 0;
+  font-size: 13px;
 }
 
 /* LOGIN */
@@ -238,12 +549,14 @@ body {
   font-weight: 600;
 }
 
+/* FORMULARIO (regra única, unificada — antes havia duas declarações
+   de .formulario, uma sobrescrevendo parte da outra) */
 .formulario {
   display: flex;
+  flex-direction: column;
   height: 90%;
   width: 80%;
   justify-content: space-around;
-  flex-direction: column;
 }
 
 .formulario span {
@@ -271,6 +584,12 @@ body {
   text-align: center;
   border-radius: 4px;
   margin: 0;
+}
+
+.formulario .tipo_campo {
+  font-size: 18px;
+  font-weight: 600 !important;
+  color: var(--texto-principal);
 }
 
 .campo {
@@ -312,10 +631,10 @@ body {
 }
 
 #div_erros_login {
-  display: none
+  display: none;
 }
 
-/* FORMULARIO */
+/* ALERTA DE ERRO DO FORMULARIO */
 
 .alerta_erro {
   display: flex;
@@ -338,17 +657,6 @@ body {
 .card_erro #mensagem_erro {
   font-weight: 500;
   font-size: 18px;
-}
-
-.formulario .tipo_campo {
-  font-size: 18px;
-  font-weight: 600 !important;
-  color: var(--texto-principal);
-}
-
-.formulario {
-  display: flex;
-  flex-direction: column;
 }
 
 input {
@@ -428,4 +736,61 @@ input {
 
 .mensagem-alarme .informacao {
   width: 66%;
+}
+
+/* RESPONSIVIDADE BÁSICA
+   O layout original foi pensado para telas largas (container 80%).
+   Estas regras evitam que os elementos novos quebrem em telas estreitas. */
+@media (max-width: 900px) {
+  .container {
+    width: 92%;
+    flex-wrap: wrap;
+  }
+
+  .topbar .container span.topbar-item {
+    display: none;
+  }
+
+  .header .container {
+    gap: 12px;
+  }
+
+  .navbar {
+    width: auto;
+    gap: 16px;
+  }
+
+  .btn-cta--header {
+    display: none;
+  }
+
+  .banner .container p {
+    width: 100%;
+  }
+
+  .stats .container {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .stat {
+    width: 45%;
+  }
+
+  .funcionalidade {
+    width: calc(50% - 10px);
+  }
+
+  .boxes {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .box {
+    width: 100%;
+  }
+
+  .footer-coluna {
+    width: 100%;
+  }
 }

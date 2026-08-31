@@ -201,12 +201,23 @@ body {
   height: var(--tamanho-banner);
   color: var(--texto-principal);
   background-color: var(--destaque-escuro);
-  background-image: url('../assets/imgs/maquina.avif');
+  background-image: url('../assets/imgs/monitor_parametrico.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  opacity: 0.7;
 }
+
+/* .banner::before{
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    rgba(8, 6, 8, 0.0) 0%,
+    rgba(8,6,8, 0.45) 40%,
+    rgba(8, 6, 8, 0.45) 80%,
+    rgba(8, 6, 8, 0.0) 100%
+  );
+} */
 
 .banner .container {
   justify-content: center;
@@ -518,9 +529,15 @@ body {
 /* LOGIN */
 
 .login {
-  height: var(--tamanho-login);
+  height: 100vh; /* Garante que a seção ocupe 100% da altura da tela */
+  width: 100vw;  /* Garante que a seção ocupe 100% da largura da tela */
   background-color: var(--bg-fundo);
+  background-image: url('../assets/imgs/ressonancia2.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover; /* ISSO faz a imagem de fundo cobrir a tela inteira */
 }
+
 
 .login .container {
   justify-content: center;
@@ -664,9 +681,9 @@ input {
   border: 1px solid var(--linha);
   background-color: var(--bg-fundo);
   color: var(--texto-principal);
-  padding: 10px;
+  padding: 12px;
   text-align: center;
-  border-radius: 4px;
+  border-radius: 10px;
 }
 
 .btn {

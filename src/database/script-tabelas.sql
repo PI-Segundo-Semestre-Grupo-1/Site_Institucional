@@ -1,58 +1,85 @@
--- Arquivo de apoio, caso você queira criar tabelas como as aqui criadas para a API funcionar.
--- Você precisa executar os comandos no banco de dados para criar as tabelas,
--- ter este arquivo aqui não significa que a tabela em seu BD estará como abaixo!
+create database magnasync_rm;
+use magnasync_rm;
 
-/*
-comandos para mysql server
-*/
-
-CREATE DATABASE aquatech;
-
-USE aquatech;
-
-CREATE TABLE empresa (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	razao_social VARCHAR(50),
-	cnpj CHAR(14),
-	codigo_ativacao VARCHAR(50)
+create table usuario (
+id_usuario int primary key auto_increment,
+nome varchar(45) not null,
+nome_social varchar(45),
+email varchar(45) not null,
+telefone int not null,
+cpf char(11) not null,
+cargo varchar(45)
 );
 
-CREATE TABLE usuario (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(50),
-	email VARCHAR(50),
-	senha VARCHAR(50),
-	fk_empresa INT,
-	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
+create table hospital (
+id_hospital int primary key auto_increment,
+id_usuario int not null,
+nome varchar(100) not null,
+cnpj char(14),
+cep char(9),
+rua varchar(45),
+cidade varchar(45),
+estado char(2),
+telefone varchar(45),
+constraint fk_usuario foreign key (id_usuario)
+references usuario(id_usuario)
 );
 
-CREATE TABLE aviso (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	titulo VARCHAR(100),
-	descricao VARCHAR(150),
-	fk_usuario INT,
-	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
+create table equipamento (
+id_equipamento int primary key auto_increment,
+id_hospital int not null,
+modelo varchar(100) not null,
+fabricante varchar(60),
+numero_serie varchar(60),
+sistema_operacional varchar(60),
+status_atual varchar(45),
+data_instalacao date,
+constraint fk_hospital foreign key (id_hospital) 
+references hospital(id_hospital)
 );
 
-create table aquario (
-/* em nossa regra de negócio, um aquario tem apenas um sensor */
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	descricao VARCHAR(300),
-	fk_empresa INT,
-	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
+create table registroCpu (
+id_cpu int primary key auto_increment,
+id_equipamento int not null,
+percentual_uso decimal(5,2),
+frequencia decimal(10,2),
+nucleos int,
+data_hora datetime not null,
+constraint fk_equipamento foreign key (id_equipamento)
+references equipamento(id_equipamento)
 );
 
-/* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
-
-create table medida (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	temperatura DECIMAL,
-	momento DATETIME,
-	fk_aquario INT,
-	FOREIGN KEY (fk_aquario) REFERENCES aquario(id)
+create table registroRam (
+id_ram int primary key auto_increment,
+id_equipamento int not null,
+percentual_uso decimal(5,2),
+memoria_total decimal(10,2),
+memoria_disponivel decimal(10,2),
+data_hora datetime not null,
+constraint fk_equipamento2 foreign key (id_equipamento)
+references equipamento(id_equipamento)
 );
 
-insert into empresa (razao_social, codigo_ativacao) values ('Empresa 1', 'ED145B');
-insert into empresa (razao_social, codigo_ativacao) values ('Empresa 2', 'A1B2C3');
-insert into aquario (descricao, fk_empresa) values ('Aquário de Estrela-do-mar', 1);
-insert into aquario (descricao, fk_empresa) values ('Aquário de Peixe-dourado', 2);
+create table registroArmazenamento(
+id_armazenamento int primary key auto_increment,
+id_equipamento int not null,
+percentual_uso decimal(5,2),
+espaco_total decimal(10,2),
+espaco_disponivel decimal(10,2),
+data_hora datetime not null,
+constraint fk_equipamento3 foreign key (id_equipamento)
+references equipamento(id_equipamento)
+);
+
+create table alerta (
+id_alerta int primary key auto_increment,
+id_equipamento int not null,
+tipo varchar(50) not null,
+descricao varchar(255),
+valor_atual decimal(10,2),
+limite decimal(10,2),
+data_hora datetime not null,
+status_atual varchar(20),
+constraint fk_equipamento4 foreign key (id_equipamento)
+references equipamento(id_equipamento)
+);

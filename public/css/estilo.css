@@ -1,8 +1,3 @@
-/* ==========================================================================
-   TEMA: MagnaSync / Monitoramento Proativo Hospitalar
-   Visual clínico, limpo e claro. Sem animações ou efeitos complexos.
-   ========================================================================== */
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
@@ -172,8 +167,6 @@ body {
   padding: 0;
 }
 
-/* Separador visual entre os itens do menu, sem depender de texto "|"
-   (evita que leitores de tela leiam um caractere sem sentido) */
 .navbar li[aria-hidden="true"] {
   width: 1px;
   height: 16px;

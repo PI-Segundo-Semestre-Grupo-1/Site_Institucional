@@ -23,6 +23,7 @@
     color: white;
     font-size: 40px;
     font-weight: 700;
+    font-family: Arial, Helvetica, sans-serif;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
     margin: 0;
 }
@@ -43,6 +44,7 @@
 .titulo-missao {
     font-size: 32px;
     font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
     color: black;
     margin-bottom: 12px;
 }
@@ -50,7 +52,7 @@
 .texto-missao {
     color: black;
     line-height: 1.6;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 /* Bloco 1 (imagem + texto) */
@@ -84,8 +86,9 @@
 
 .card-titulo-sobrenos h4,
 .card-titulo-sobrenos-2 h4 {
-    font-size: 28px;
+    font-size: 32px;
     font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
     color: black;
     margin-bottom: 10px;
 }
@@ -131,7 +134,8 @@
     margin-top: 35px;
     text-align: center;
     color: #023F3A;
-    font-size: 36px;
+    font-size: 40px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .conteineImagensImpactosProjeto {
@@ -147,13 +151,16 @@
 .itemPrimeiraImagemImpactos,
 .itemSegundaImagemImpactos,
 .itemTerceiraImagemImpactos {
-    width: 28%;
+    position: relative;
+    height: 320px;
+    width: 25%;
     min-width: 260px;
-    min-height: 300px;
-    border-radius: 12px;
-    background-color: #1E503C;
-    display: flex;
-    align-items: flex-end;
+    background-image: url('../assets/imgs/ressonaciabb.jpg');
+    background-repeat: no-repeat;
+    border-radius: 5%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .itemPrimeiraImagemImpactos:hover,
@@ -164,12 +171,17 @@
 }
 
 .textoimagemimpactos {
+    position: absolute;
+    bottom: 0;
+    left: 0;
     color: #ffffff;
+    border-radius: 0 0 5% 5%;
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 3px;
     padding: 20px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(7, 2, 2, 0.1));
 }
 
 .titulodaImagemImpactos {
@@ -184,13 +196,13 @@
 
 /* Time */
 .container-equipe {
-    width: 70%;
+    width: 60%;
     margin: 5% auto;
 }
 
 .title-equipe {
     text-align: center;
-    font-size: 36px;
+    font-size: 40px;
     font-weight: 600;
     color: #1E503C;
     margin-bottom: 20px;
@@ -204,8 +216,12 @@
 }
 
 .card-time {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
     width: 100%;
-    height: 260px;
 }
 
 .card-bg {
@@ -214,17 +230,30 @@
     border-radius: 16px;
     position: relative;
     overflow: hidden;
-    background-color: #1E503C;
+    background-size: cover;
+    background-position: center;
+}
+
+.card-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top,
+            rgba(0, 0, 0, 0.7) 0%,
+            rgba(0, 0, 0, 0.705) 25%,
+            rgba(0, 0, 0, 0.0) 50%);
 }
 
 .info {
     position: absolute;
     bottom: 0;
-    width: 100%;
+    z-index: 1;
     padding: 16px;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
+    gap: 10px;
     color: white;
 }
 
@@ -247,4 +276,25 @@
 
 .icon-time {
     width: 25px;
+}
+
+/* Foto de cada integrante */
+.integrante1 {
+    background-image: url("../assets/integrantes/ana.jpg");
+}
+
+.integrante2 {
+    background-image: url("../assets/integrantes/isabelle.jpg");
+}
+
+.integrante3 {
+    background-image: url("../assets/integrantes/joao.jpg");
+}
+
+.integrante4 {
+    background-image: url("../assets/integrantes/marco.jpg");
+}
+
+.integrante5 {
+    background-image: url("../assets/integrantes/matheus.jpg");
 }

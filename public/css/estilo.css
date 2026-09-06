@@ -180,7 +180,7 @@ body {
   letter-spacing: -0.01em;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 3px;
 }
 
 .header h1 {
@@ -327,8 +327,7 @@ body {
   margin: 12px 0;
 }
 
-/* O span dentro do h4 "Sobre nós" precisa de um destaque próprio,
-   já que herda a cor uppercase do h4 mas deve se diferenciar do resto */
+
 .social h4 span {
   color: var(--destaque-escuro);
   font-weight: 700;
@@ -522,13 +521,16 @@ body {
 /* LOGIN */
 
 .login {
-  height: 100vh; /* Garante que a seção ocupe 100% da altura da tela */
-  width: 100vw;  /* Garante que a seção ocupe 100% da largura da tela */
+  height: 100vh;
+  /* Garante que a seção ocupe 100% da altura da tela */
+  width: 100vw;
+  /* Garante que a seção ocupe 100% da largura da tela */
   background-color: var(--bg-fundo);
   background-image: url('../assets/imgs/ressonancia2.jpg');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: cover; /* ISSO faz a imagem de fundo cobrir a tela inteira */
+  background-size: cover;
+  /* ISSO faz a imagem de fundo cobrir a tela inteira */
 }
 
 

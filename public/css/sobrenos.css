@@ -7,6 +7,7 @@
     overflow: hidden;
     height: 350px;
 }
+
 .img-hero-sobrenos {
     width: 100%;
     height: 100%;
@@ -148,7 +149,7 @@
 }
 
 .itemPrimeiraImagemImpactos {
- position: relative;
+    position: relative;
     height: 320px;
     width: 25%;
     min-width: 260px;
@@ -161,8 +162,9 @@
     box-shadow: none;
     transition: transform 0.2s, box-shadow 0.2s;
 }
+
 .itemSegundaImagemImpactos {
- position: relative;
+    position: relative;
     height: 320px;
     width: 25%;
     min-width: 260px;
@@ -175,6 +177,7 @@
     box-shadow: none;
     transition: transform 0.2s, box-shadow 0.2s;
 }
+
 .itemTerceiraImagemImpactos {
     position: relative;
     height: 320px;
@@ -310,7 +313,7 @@
 }
 
 .integrante2 {
-    background-image: url("../assets/integrantes/isabelle.jpg");
+    background-image: url("../assets/integrantes/isabella.jpeg");
 }
 
 .integrante3 {
@@ -318,7 +321,7 @@
 }
 
 .integrante4 {
-    background-image: url("../assets/integrantes/marco.jpg");
+    background-image: url("../assets/integrantes/marco.jpeg");
 }
 
 .integrante5 {
